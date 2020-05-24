@@ -17,15 +17,22 @@ namespace DataBaseTutorial
     /// </summary>
     public partial class ProductAdd : Window
     {
-        public ProductAdd()
+        private readonly MainWindow _parent;
+        public string ProductName { get; set; }
+
+        public ProductAdd(MainWindow parent)
         {
+            _parent = parent;
             InitializeComponent();
+            
         }
 
         private void ButtonSaveNewProduct_Click(object sender, RoutedEventArgs e)
         {
-            //MainWindow._myProducts.Add(new Product(BoxProductName.Text, Convert.ToInt32(BoxProductID.Text), Convert.ToDouble(BoxProductWeight.Text), BoxProductAddled.IsEnabled, "05/02/2019 07:32:17"));
-            //MainWindow.ProductList.ItemsSource = MainWindow._myProducts;
+            var product = new Product(BoxProductName.Text, 01, 0.5, true, "01/02/2020 07:32:17");
+            _parent._myProducts.Add(product);            
+            _parent.ProductList.Items.Refresh();
+            this.Close();
         }
     }
 }

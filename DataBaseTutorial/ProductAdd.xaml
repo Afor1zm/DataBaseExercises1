@@ -16,7 +16,7 @@
         <Label x:Name="LabelDate" Content="Buy Date" HorizontalAlignment="Left" Height="35" Margin="579,28,0,0" VerticalAlignment="Top" Width="100" Cursor=""/>
         <CheckBox x:Name="BoxProductAddled" Content="Product Addled?" HorizontalAlignment="Left" Height="36" Margin="425,107,0,0" VerticalAlignment="Top" Width="114"/>
         <TextBox x:Name="BoxProductID" HorizontalAlignment="Left" Height="36" Margin="22,107,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="79"/>
-        <TextBox x:Name="BoxProductName" HorizontalAlignment="Left" Height="36" Margin="161,107,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="79"/>
+        <TextBox x:Name="BoxProductName" DataContext="{Binding ProductName,Mode=TwoWay}" HorizontalAlignment="Left" Height="36" Margin="161,107,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="79"/>
         <TextBox x:Name="BoxProductWeight" HorizontalAlignment="Left" Height="36" Margin="300,107,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="79"/>
         <DatePicker x:Name="BoxProductDate" HorizontalAlignment="Left" Height="36" Margin="561,107,0,0" VerticalAlignment="Top" Width="211"/>
 

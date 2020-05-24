@@ -19,6 +19,6 @@ namespace DataBaseTutorial
             ProductAddled = productAddled;
             ProductBuyedDate = Convert.ToDateTime(productBuyed);
             ProductBuyedDate.ToShortDateString();
-        }
+        }        
     }
 }
