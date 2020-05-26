@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace DataBaseTutorial
 {
@@ -12,13 +10,12 @@ namespace DataBaseTutorial
         public bool ProductAddled { get; set; }
         public DateTime ProductBuyedDate { get; set; } 
         public Product(string productName, int productID, double productWeight, bool productAddled, string productBuyed)
-        {            
+        {
             ProductName = productName;
             ProductId = productID;
             ProductWeight = productWeight;
             ProductAddled = productAddled;
             ProductBuyedDate = Convert.ToDateTime(productBuyed);
-            ProductBuyedDate.ToShortDateString();
         }        
     }
 }
