@@ -24,9 +24,9 @@ namespace DataBaseTutorial
             {
                 try
                 {
-                    validator.ValidateAndThrow(new Product(BoxProductName.Text, Convert.ToInt32(BoxProductID.Text), Convert.ToDouble(BoxProductWeight.Text), ((bool)BoxProductAddled.IsChecked == true), BoxProductDate.Text), ruleSet: "default");
+                    validator.ValidateAndThrow(new Product(BoxProductName.Text, _parent._myProducts.Count, Convert.ToDouble(BoxProductWeight.Text), ((bool)BoxProductAddled.IsChecked == true), BoxProductDate.Text), ruleSet: "default");
                     {
-                        _parent.AddNewProduct(BoxProductName.Text, Convert.ToInt32(BoxProductID.Text), Convert.ToDouble(BoxProductWeight.Text), ((bool)BoxProductAddled.IsChecked == true), BoxProductDate.Text);
+                        _parent.AddNewProduct(BoxProductName.Text, _parent._myProducts.Count, Convert.ToDouble(BoxProductWeight.Text), ((bool)BoxProductAddled.IsChecked == true), BoxProductDate.Text);
                     }
                     _parent.ProductList.Items.Refresh();
                     this.Close();
