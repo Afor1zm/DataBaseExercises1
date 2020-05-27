@@ -2,19 +2,17 @@
 using DataBaseTutorial.Validators;
 using System.Windows;
 using FluentValidation;
-using System;
 
 namespace DataBaseTutorial
 {
     /// <summary>
     /// Логика взаимодействия для ProductAdd.xaml
     /// </summary>
-    public partial class ProductAdd : Window
+    public partial class ProductAdd 
     {
-        private readonly MainWindow _parent;
-        public ProductAdd(MainWindow parent)
-        {
-            _parent = parent;
+        BusinessLogic businessLogic = new BusinessLogic();        
+        public ProductAdd()
+        {           
             InitializeComponent();
         }
 
@@ -24,11 +22,11 @@ namespace DataBaseTutorial
             {
                 try
                 {
-                    validator.ValidateAndThrow(new Product(BoxProductName.Text, Convert.ToInt32(BoxProductID.Text), Convert.ToDouble(BoxProductWeight.Text), ((bool)BoxProductAddled.IsChecked == true), BoxProductDate.Text), ruleSet: "default");
+                    validator.ValidateAndThrow(new Product(BoxProductName.Text, businessLogic._myProducts.Count, Convert.ToDouble(BoxProductWeight.Text), ((bool)BoxProductAddled.IsChecked == true), BoxProductDate.Text), ruleSet: "default");
                     {
-                        _parent.AddNewProduct(BoxProductName.Text, Convert.ToInt32(BoxProductID.Text), Convert.ToDouble(BoxProductWeight.Text), ((bool)BoxProductAddled.IsChecked == true), BoxProductDate.Text);
+                        businessLogic.AddNewProduct(BoxProductName.Text, Convert.ToDouble(BoxProductWeight.Text), ((bool)BoxProductAddled.IsChecked == true), BoxProductDate.Text);
                     }
-                    _parent.ProductList.Items.Refresh();
+                    businessLogic.Refresh();
                     this.Close();
                 }
                 catch

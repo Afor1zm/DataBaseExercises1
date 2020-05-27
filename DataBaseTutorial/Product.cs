@@ -2,7 +2,7 @@
 
 namespace DataBaseTutorial
 {
-    public class Product
+    public class Product: IProduct
     {
         public string ProductName { get; set; }
         public int ProductId { get; set; }

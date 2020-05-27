@@ -9,13 +9,11 @@
     <Grid>
         <Button x:Name="ButtonSaveNewProduct" Content="Save" HorizontalAlignment="Left" Height="43" Margin="561,306,0,0" VerticalAlignment="Top" Width="100
                 " Click="ButtonSaveNewProduct_Click"/>
-        <Label x:Name="LabelID" Content="Product ID" HorizontalAlignment="Left" Height="35" Margin="22,28,0,0" VerticalAlignment="Top" Width="100"/>
         <Label x:Name="LabelName" Content="Product Name" HorizontalAlignment="Left" Height="35" Margin="161,28,0,0" VerticalAlignment="Top" Width="100"/>
         <Label x:Name="LabelWeight" Content="Product Weight" HorizontalAlignment="Left" Height="35" Margin="300,28,0,0" VerticalAlignment="Top" Width="100" Cursor=""/>
         <Label x:Name="LabelAddled" Content="Product Addled" HorizontalAlignment="Left" Height="35" Margin="439,28,0,0" VerticalAlignment="Top" Width="100" Cursor=""/>
         <Label x:Name="LabelDate" Content="Buy Date" HorizontalAlignment="Left" Height="35" Margin="579,28,0,0" VerticalAlignment="Top" Width="100" Cursor=""/>
         <CheckBox x:Name="BoxProductAddled" Content="Product Addled?" HorizontalAlignment="Left" Height="36" Margin="425,107,0,0" VerticalAlignment="Top" Width="114"/>
-        <TextBox x:Name="BoxProductID" HorizontalAlignment="Left" Height="36" Margin="22,107,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="79"/>
         <TextBox x:Name="BoxProductName" DataContext="{Binding ProductName,Mode=TwoWay}" HorizontalAlignment="Left" Height="36" Margin="161,107,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="79"/>
         <TextBox x:Name="BoxProductWeight" HorizontalAlignment="Left" Height="36" Margin="300,107,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="79"/>
         <DatePicker x:Name="BoxProductDate" HorizontalAlignment="Left" Height="36" Margin="561,107,0,0" VerticalAlignment="Top" Width="211"/>
