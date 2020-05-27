@@ -51,7 +51,7 @@ namespace DataBaseTutorial
         /// <param name="productBuyed"></param>
         public void AddNewProduct(string productName, int productID, double productWeight, bool productAddled, string productBuyed)
         {
-            _myProducts.Add(new Product(productName, productID, productWeight, productAddled, productBuyed));                        
+            _myProducts.Add(new Product(productName, productID, productWeight, productAddled, productBuyed));
         }
     }
 }

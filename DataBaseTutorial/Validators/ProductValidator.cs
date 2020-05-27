@@ -12,14 +12,16 @@ namespace DataBaseTutorial.Validators
         {
             RuleFor(p => p.ProductName)
                 .Cascade(CascadeMode.StopOnFirstFailure)
-                .NotEmpty().WithMessage("can't be empty")                
+                .NotEmpty().WithMessage("can't be empty")
                 .Must(ProductValidName).WithMessage("Contains invalid characters");
 
             RuleFor(p => p.ProductWeight)
                 .Cascade(CascadeMode.StopOnFirstFailure)
                 .NotEmpty()
                 .NotNull().WithMessage("Use only Numbers and dot");
+
             RuleFor(p => p.ProductId).NotEmpty();
+
             RuleFor(p => p.ProductBuyedDate)
                 .Cascade(CascadeMode.StopOnFirstFailure)
                 .NotEmpty().WithMessage("can't be empty")
@@ -28,7 +30,7 @@ namespace DataBaseTutorial.Validators
 
         bool ProductValidName(string name)
         {
-            return name.All(Char.IsLetter);            
+            return name.All(Char.IsLetter);
         }
         bool ProductAvaliableDate(DateTime date)
         {

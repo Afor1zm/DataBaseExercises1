@@ -1,10 +1,7 @@
-﻿using DataBaseTutorial.Validators;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System;
+using DataBaseTutorial.Validators;
 using System.Windows;
 using FluentValidation;
-using FluentValidation.Results;
-using ValidationResult = FluentValidation.Results.ValidationResult;
 using System;
 
 namespace DataBaseTutorial
@@ -15,8 +12,6 @@ namespace DataBaseTutorial
     public partial class ProductAdd : Window
     {
         private readonly MainWindow _parent;
-        public ValidationResult results = new ValidationResult();
-
         public ProductAdd(MainWindow parent)
         {
             _parent = parent;
@@ -26,24 +21,21 @@ namespace DataBaseTutorial
         private void ButtonSaveNewProduct_Click(object sender, RoutedEventArgs e)
         {
             ProductValidator validator = new ProductValidator();
-            ValidationResult results = validator.Validate(new Product(BoxProductName.Text, Convert.ToInt32(BoxProductID.Text), Convert.ToDouble(BoxProductWeight.Text), ((bool)BoxProductAddled.IsChecked == true), BoxProductDate.Text));
-            if (!results.IsValid)
-            {                
-                foreach (var failure in results.Errors)
+            {
+                try
                 {
-                    MessageBox.Show("Property " + failure.PropertyName + " failed validation. Error was: " + failure.ErrorMessage);
+                    validator.ValidateAndThrow(new Product(BoxProductName.Text, Convert.ToInt32(BoxProductID.Text), Convert.ToDouble(BoxProductWeight.Text), ((bool)BoxProductAddled.IsChecked == true), BoxProductDate.Text), ruleSet: "default");
+                    {
+                        _parent.AddNewProduct(BoxProductName.Text, Convert.ToInt32(BoxProductID.Text), Convert.ToDouble(BoxProductWeight.Text), ((bool)BoxProductAddled.IsChecked == true), BoxProductDate.Text);
+                    }
+                    _parent.ProductList.Items.Refresh();
+                    this.Close();
+                }
+                catch
+                {
+                    MessageBox.Show("Use only number for ID and Weighy. Data cn't be less than 1 year before");
                 }
             }
-            else
-            {
-                _parent.AddNewProduct(BoxProductName.Text, Convert.ToInt32(BoxProductID.Text), Convert.ToDouble(BoxProductWeight.Text), ((bool)BoxProductAddled.IsChecked == true), BoxProductDate.Text);
-            }
-                                   
-            _parent.ProductList.Items.Refresh();
-            if (results.IsValid == true)
-            {
-                this.Close();
-            }           
         }
     }
 }
