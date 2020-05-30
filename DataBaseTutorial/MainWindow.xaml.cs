@@ -21,11 +21,11 @@ namespace DataBaseTutorial
         public MainWindow()
         {
             InitializeComponent();
-            //BootStrapper.Start();
-            //productService = BootStrapper.Resolve<ProductService>();
-            productService.BussinessLogic(); 
-            _myProducts = productService.GetProductList();
-            ProductList.ItemsSource = _myProducts;
+            ////BootStrapper.Start();
+            ////productService = BootStrapper.Resolve<ProductService>();
+            //productService.BussinessLogic(); 
+            //_myProducts = productService.GetProductList();
+            //ProductList.ItemsSource = _myProducts;
         }
        
         private void Button_Click(object sender, RoutedEventArgs e)

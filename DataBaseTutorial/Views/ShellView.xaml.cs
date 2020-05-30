@@ -10,7 +10,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace DataBaseTutorial.View
+namespace DataBaseTutorial.Views
 {
     /// <summary>
     /// Логика взаимодействия для ShellView.xaml
