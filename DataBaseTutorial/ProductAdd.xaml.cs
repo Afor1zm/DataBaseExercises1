@@ -10,30 +10,16 @@ namespace DataBaseTutorial
     /// </summary>
     public partial class ProductAdd 
     {
-        BusinessLogic businessLogic = new BusinessLogic();        
+        public ProductService productService = new ProductService();        
         public ProductAdd()
         {           
-            InitializeComponent();
+            InitializeComponent();            
         }
 
         private void ButtonSaveNewProduct_Click(object sender, RoutedEventArgs e)
         {
-            ProductValidator validator = new ProductValidator();
-            {
-                try
-                {
-                    validator.ValidateAndThrow(new Product(BoxProductName.Text, businessLogic._myProducts.Count, Convert.ToDouble(BoxProductWeight.Text), ((bool)BoxProductAddled.IsChecked == true), BoxProductDate.Text), ruleSet: "default");
-                    {
-                        businessLogic.AddNewProduct(BoxProductName.Text, Convert.ToDouble(BoxProductWeight.Text), ((bool)BoxProductAddled.IsChecked == true), BoxProductDate.Text);
-                    }
-                    businessLogic.Refresh();
-                    this.Close();
-                }
-                catch
-                {
-                    MessageBox.Show("Use only number for ID and Weighy. Data cn't be less than 1 year before");
-                }
-            }
+            productService.ValidateNewProduct(BoxProductName.Text, BoxProductWeight.Text, ((bool)BoxProductAddled.IsChecked == true), BoxProductDate.Text);
+            this.Close();
         }
     }
 }
