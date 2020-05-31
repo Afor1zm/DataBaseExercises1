@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using DataBaseTutorial.Validators;
 using System.Windows;
 using FluentValidation;
