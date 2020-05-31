@@ -1,9 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Windows;
+﻿using DataBaseTutorial.Validators;
 using FluentValidation;
-using DataBaseTutorial.Validators;
+using System;
+using System.Collections.Generic;
+using System.Windows;
 
 namespace DataBaseTutorial
 {
@@ -11,26 +10,31 @@ namespace DataBaseTutorial
     {
         private List<Product> _myProducts = new List<Product>();
 
-        public void BussinessLogic()
+        public ProductService()
         {
             SeedProducts();
-        }
-
-        public void SeedProducts()
-        {
-            AddNewProduct("Onion", 0.5, true, "12/02/2020");
-            AddNewProduct("Salat", 1, true, "01/02/2020");
-            AddNewProduct("Pickle", 2.5, true, "01/02/2020");
-            AddNewProduct("Potato", 8.56, true, "01/02/2020");
-            AddNewProduct("Tomato", 0.05, false, "01/02/2020");
-        }
-
+        }        
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="productName"></param>
+        /// <param name="productWeight"></param>
+        /// <param name="productAddled"></param>
+        /// <param name="productBuyed"></param>
         public void AddNewProduct(string productName, double productWeight, bool productAddled, string productBuyed)
         {
             _myProducts.Add(new Product(productName, _myProducts.Count + 1, productWeight, productAddled, productBuyed));
         }
 
-        public void ValidateNewProduct(string productName, string productWeight, bool productAddled, string productBuyed)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="productName"></param>
+        /// <param name="productWeight"></param>
+        /// <param name="productAddled"></param>
+        /// <param name="productBuyed"></param>
+        public void ValidateAndAddNewProduct(string productName, string productWeight, bool productAddled, string productBuyed)
         {
             ProductValidator validator = new ProductValidator();
             {
@@ -48,9 +52,22 @@ namespace DataBaseTutorial
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public List<Product> GetProductList()
         {
             return _myProducts;
-        }        
+        }
+
+        private void SeedProducts()
+        {
+            AddNewProduct("Onion", 0.5, true, "12/02/2020");
+            AddNewProduct("Salat", 1, true, "01/02/2020");
+            AddNewProduct("Pickle", 2.5, true, "01/02/2020");
+            AddNewProduct("Potato", 8.56, true, "01/02/2020");
+            AddNewProduct("Tomato", 0.05, false, "01/02/2020");
+        }
     }
 }

@@ -1,7 +1,3 @@
-using Autofac.Core;
-using System.Buffers;
-using System.Collections.Generic;
-using System.Linq;
 using System.Windows;
 
 namespace DataBaseTutorial
@@ -13,22 +9,18 @@ namespace DataBaseTutorial
     {
         public MainWindow()
         {            
-            var container = Bootstrapper.Resolve<IProductService>();
             InitializeComponent();
-            Bootstrapper.Start();            
-            container.BussinessLogic();            
-            container.GetProductList();
-            ProductList.ItemsSource = container.GetProductList();
+
+            var productService = Bootstrapper.Resolve<IProductService>();
+
+            ProductList.ItemsSource = productService.GetProductList();
             ProductList.Items.Refresh();
         }
        
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            var container = Bootstrapper.Resolve<IProductService>();
-            ProductAdd objproductAdd = new ProductAdd();
-            objproductAdd.Show();
-            var newProducts = container.GetProductList().Except(container.GetProductList());
-            container.GetProductList().AddRange(newProducts);
+            ProductAdd productAddDialog = new ProductAdd();
+            productAddDialog.ShowDialog();
             ProductList.Items.Refresh();
         }
     }
