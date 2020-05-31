@@ -2,11 +2,11 @@
 
 namespace DataBaseTutorial
 {
-    public class Product
+    public class Product : IProduct
     {
         public string ProductName { get; set; }
         public int ProductId { get; set; }
-        public double ProductWeight {get;set;}
+        public double ProductWeight { get; set; }
         public bool ProductAddled { get; set; }
         public DateTime ProductBuyedDate { get; set; }
         public Product(string productName, int productID, double productWeight, bool productAddled, string productBuyed)

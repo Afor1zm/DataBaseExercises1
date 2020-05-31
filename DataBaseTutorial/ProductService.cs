@@ -7,9 +7,9 @@ using DataBaseTutorial.Validators;
 
 namespace DataBaseTutorial
 {
-    public class ProductService: IProductService
+    public class ProductService : IProductService
     {
-        private List<Product> _myProducts = new List<Product>();        
+        private List<Product> _myProducts = new List<Product>();
 
         public void BussinessLogic()
         {
@@ -28,7 +28,7 @@ namespace DataBaseTutorial
         public void AddNewProduct(string productName, double productWeight, bool productAddled, string productBuyed)
         {
             _myProducts.Add(new Product(productName, _myProducts.Count + 1, productWeight, productAddled, productBuyed));
-        }        
+        }
 
         public void ValidateNewProduct(string productName, string productWeight, bool productAddled, string productBuyed)
         {
@@ -36,9 +36,9 @@ namespace DataBaseTutorial
             {
                 try
                 {
-                    validator.ValidateAndThrow(new Product(productName, _myProducts.Count+1, Convert.ToDouble(productWeight), productAddled, productBuyed), ruleSet: "default");
+                    validator.ValidateAndThrow(new Product(productName, _myProducts.Count + 1, Convert.ToDouble(productWeight), productAddled, productBuyed), ruleSet: "default");
                     {
-                        AddNewProduct(productName, Convert.ToDouble(productWeight), ((bool)productAddled == true), productBuyed);                        
+                        AddNewProduct(productName, Convert.ToDouble(productWeight), ((bool)productAddled == true), productBuyed);
                     }
                 }
                 catch
@@ -51,6 +51,6 @@ namespace DataBaseTutorial
         public List<Product> GetProductList()
         {
             return _myProducts;
-        }
+        }        
     }
 }

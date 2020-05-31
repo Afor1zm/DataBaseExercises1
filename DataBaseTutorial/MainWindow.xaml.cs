@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using Autofac.Core;
+using System.Buffers;
+using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 
@@ -9,31 +11,24 @@ namespace DataBaseTutorial
     /// </summary>
     public partial class MainWindow : Window
     {
-        ProductService productService = new ProductService();
-        public List<Product> _myProducts = new List<Product>();
-
-        //private IProductService _productService;
-
-        //protected override void OnStartup (StartupEventArgs e)
-        //{
-
-        //}
         public MainWindow()
-        {
+        {            
+            var container = Bootstrapper.Resolve<IProductService>();
             InitializeComponent();
-            ////BootStrapper.Start();
-            ////productService = BootStrapper.Resolve<ProductService>();
-            //productService.BussinessLogic(); 
-            //_myProducts = productService.GetProductList();
-            //ProductList.ItemsSource = _myProducts;
+            Bootstrapper.Start();            
+            container.BussinessLogic();            
+            container.GetProductList();
+            ProductList.ItemsSource = container.GetProductList();
+            ProductList.Items.Refresh();
         }
        
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            var container = Bootstrapper.Resolve<IProductService>();
             ProductAdd objproductAdd = new ProductAdd();
             objproductAdd.Show();
-            var newProducts = productService.GetProductList().Except(_myProducts);
-            _myProducts.AddRange(newProducts);
+            var newProducts = container.GetProductList().Except(container.GetProductList());
+            container.GetProductList().AddRange(newProducts);
             ProductList.Items.Refresh();
         }
     }

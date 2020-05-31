@@ -2,6 +2,7 @@
 using DataBaseTutorial.Validators;
 using System.Windows;
 using FluentValidation;
+using System.Windows.Controls;
 
 namespace DataBaseTutorial
 {
@@ -10,7 +11,7 @@ namespace DataBaseTutorial
     /// </summary>
     public partial class ProductAdd 
     {
-        public ProductService productService = new ProductService();        
+        
         public ProductAdd()
         {           
             InitializeComponent();            
@@ -18,8 +19,9 @@ namespace DataBaseTutorial
 
         private void ButtonSaveNewProduct_Click(object sender, RoutedEventArgs e)
         {
-            productService.ValidateNewProduct(BoxProductName.Text, BoxProductWeight.Text, ((bool)BoxProductAddled.IsChecked == true), BoxProductDate.Text);
-            this.Close();
+            var container = Bootstrapper.Resolve<IProductService>();            
+            container.ValidateNewProduct(BoxProductName.Text, BoxProductWeight.Text, ((bool)BoxProductAddled.IsChecked == true), BoxProductDate.Text);
+            this.Close();            
         }
     }
 }

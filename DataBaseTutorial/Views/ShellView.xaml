@@ -5,8 +5,21 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DataBaseTutorial.Views"
         mc:Ignorable="d"
-        Title="ShellView" Height="450" Width="800">
+        Title="ShellView" Height="491" Width="963">
     <Grid>
-        
+        <Button x:Name="ButtonAddNewProduct" Content="Add Product" HorizontalAlignment="Left" Margin="688,383,0,0" VerticalAlignment="Top" Height="49" Width="165" Click="Button_Click"/>
+
+        <ListView x:Name="ProductList" HorizontalAlignment="Left" Height="322" VerticalAlignment="Top" Width="708" HorizontalContentAlignment="Center" Margin="26,10,0,0" >
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Width="150" DisplayMemberBinding="{Binding ProductName}" Header="Product Name" />
+                    <GridViewColumn Width="150" DisplayMemberBinding="{Binding ProductId}" Header="Product ID" />
+                    <GridViewColumn Width="150" DisplayMemberBinding="{Binding ProductWeight}" Header="Product Wieght" />
+                    <GridViewColumn Width="150" DisplayMemberBinding="{Binding ProductAddled}" Header="Product Addled" />
+                    <GridViewColumn Width="150" DisplayMemberBinding="{Binding ProductBuyedDate}" Header="Product Buyed Date" />
+                </GridView>
+            </ListView.View>
+        </ListView>
+
     </Grid>
 </Window>

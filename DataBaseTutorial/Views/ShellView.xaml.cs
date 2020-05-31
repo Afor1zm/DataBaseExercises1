@@ -20,6 +20,14 @@ namespace DataBaseTutorial.Views
         public ShellView()
         {
             InitializeComponent();
+            
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            ProductAdd objproductAdd = new ProductAdd();
+            objproductAdd.Show();
+            ProductList.Items.Refresh();
         }
     }
 }
