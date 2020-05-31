@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using FluentValidation;
 
+
 namespace DataBaseTutorial.Validators
 {
     public class ProductValidator : AbstractValidator<Product>
