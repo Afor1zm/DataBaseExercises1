@@ -17,5 +17,9 @@ namespace DataBaseTutorial
             ProductAddled = productAddled;
             ProductBuyedDate = Convert.ToDateTime(productBuyed);
         }
+        public Product()
+        {
+
+        }
     }
 }

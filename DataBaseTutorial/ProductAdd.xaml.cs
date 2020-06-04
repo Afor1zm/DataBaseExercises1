@@ -16,7 +16,7 @@ namespace DataBaseTutorial
         private void ButtonSaveNewProduct_Click(object sender, RoutedEventArgs e)
         {
             var productService = Bootstrapper.Resolve<IProductService>();            
-            productService.ValidateAndAddNewProduct(BoxProductName.Text, BoxProductWeight.Text, ((bool)BoxProductAddled.IsChecked == true), BoxProductDate.Text);
+            productService.ValidateAndAddNewProduct(BoxProductName.Text, BoxProductWeight.Text, ((bool)BoxProductAddled.IsChecked == true), BoxProductDate.Text);            
             Close();            
         }
     }

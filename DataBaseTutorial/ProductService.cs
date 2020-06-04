@@ -2,14 +2,13 @@
 using FluentValidation;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows;
 
 namespace DataBaseTutorial
 {
     public class ProductService : IProductService
     {
-        private List<Product> _myProducts = new List<Product>();
-
         public ProductService()
         {
             SeedProducts();
@@ -23,8 +22,13 @@ namespace DataBaseTutorial
         /// <param name="productAddled"></param>
         /// <param name="productBuyed"></param>
         public void AddNewProduct(string productName, double productWeight, bool productAddled, string productBuyed)
-        {
-            _myProducts.Add(new Product(productName, _myProducts.Count + 1, productWeight, productAddled, productBuyed));
+        {            
+            using (DatabaseContext dbContext = new DatabaseContext())
+            {
+                dbContext.Product.Add(new Product(productName, dbContext.Product.Count()+1, productWeight, productAddled, productBuyed));
+                dbContext.SaveChanges();
+            }
+                
         }
 
         /// <summary>
@@ -40,10 +44,13 @@ namespace DataBaseTutorial
             {
                 try
                 {
-                    validator.ValidateAndThrow(new Product(productName, _myProducts.Count + 1, Convert.ToDouble(productWeight), productAddled, productBuyed), ruleSet: "default");
+                    using (DatabaseContext dbContext = new DatabaseContext())
                     {
-                        AddNewProduct(productName, Convert.ToDouble(productWeight), ((bool)productAddled == true), productBuyed);
-                    }
+                        validator.ValidateAndThrow(new Product(productName, dbContext.Product.Count() + 1, Convert.ToDouble(productWeight), productAddled, productBuyed), ruleSet: "default");
+                        {
+                            AddNewProduct(productName, Convert.ToDouble(productWeight), ((bool)productAddled == true), productBuyed);
+                        }
+                    }                        
                 }
                 catch
                 {
@@ -58,7 +65,12 @@ namespace DataBaseTutorial
         /// <returns></returns>
         public List<Product> GetProductList()
         {
-            return _myProducts;
+            using (DatabaseContext dbContext = new DatabaseContext())
+            {
+                dbContext.Product.Add(new Product());
+                return dbContext.Product.ToList();
+            }
+            
         }
 
         private void SeedProducts()
