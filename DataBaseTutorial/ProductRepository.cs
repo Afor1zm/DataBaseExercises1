@@ -27,14 +27,5 @@ namespace DataBaseTutorial
             _context.SaveChanges();
             return product;
         }
-
-        private void SeedProducts()
-        {
-            AddNewProduct("Onion", 0.5, true, "12/02/2020");
-            AddNewProduct("Salat", 1, true, "01/02/2020");
-            AddNewProduct("Pickle", 2.5, true, "01/02/2020");
-            AddNewProduct("Potato", 8.56, true, "01/02/2020");
-            AddNewProduct("Tomato", 0.05, false, "01/02/2020");
-        }
     }
 }

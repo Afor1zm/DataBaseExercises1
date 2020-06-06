@@ -17,7 +17,7 @@ namespace DataBaseTutorial
         }
 
         /// <summary>
-        /// 
+        /// Validate Product's properties
         /// </summary>
         /// <param name="productName"></param>
         /// <param name="productWeight"></param>
@@ -43,7 +43,7 @@ namespace DataBaseTutorial
         }
 
         /// <summary>
-        /// 
+        /// Reciveing List of Product
         /// </summary>
         /// <returns></returns>
         public List<Product> GetProductList()
