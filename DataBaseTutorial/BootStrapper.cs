@@ -15,8 +15,9 @@ namespace DataBaseTutorial
             if (_rootScope != null) return;
 
             var builder = new ContainerBuilder();
-
+            builder.RegisterType<DatabaseContext>().SingleInstance();
             builder.RegisterType<ProductService>().As<IProductService>().SingleInstance();
+            builder.RegisterType<ProductRepository>().As<IProductRepository>();
 
             _rootScope = builder.Build();            
         }

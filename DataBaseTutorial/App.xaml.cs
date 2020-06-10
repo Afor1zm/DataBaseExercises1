@@ -7,6 +7,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 using Autofac.Core;
+using Microsoft.EntityFrameworkCore;
 
 namespace DataBaseTutorial
 {
@@ -18,6 +19,10 @@ namespace DataBaseTutorial
         public App()
         {
             Bootstrapper.Start();
+            using (DatabaseContext dbContext = new DatabaseContext())
+            {
+                dbContext.Database.Migrate();
+            }
         }
     }
 }

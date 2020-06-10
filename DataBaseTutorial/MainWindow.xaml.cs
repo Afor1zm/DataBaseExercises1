@@ -1,3 +1,4 @@
+using System.Linq;
 using System.Windows;
 
 namespace DataBaseTutorial
@@ -15,6 +16,7 @@ namespace DataBaseTutorial
 
             ProductList.ItemsSource = productService.GetProductList();
             ProductList.Items.Refresh();
+            RefreshList();
         }
        
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -22,6 +24,15 @@ namespace DataBaseTutorial
             ProductAdd productAddDialog = new ProductAdd();
             productAddDialog.ShowDialog();
             ProductList.Items.Refresh();
+            RefreshList();
+        }
+
+        public void RefreshList()
+        {
+            using (DatabaseContext dbContext = new DatabaseContext())
+            {
+                ProductList.ItemsSource = dbContext.Product.ToList();
+            }
         }
     }
 }

@@ -19,9 +19,7 @@ namespace DataBaseTutorial.Validators
             RuleFor(p => p.ProductWeight)
                 .Cascade(CascadeMode.StopOnFirstFailure)
                 .NotEmpty()
-                .NotNull().WithMessage("Use only Numbers and dot");
-
-            RuleFor(p => p.ProductId).NotEmpty();
+                .NotNull().WithMessage("Use only Numbers and dot");            
 
             RuleFor(p => p.ProductBuyedDate)
                 .Cascade(CascadeMode.StopOnFirstFailure)
